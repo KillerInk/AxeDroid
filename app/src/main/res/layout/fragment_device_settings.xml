@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="data"
+            type="com.osum.axedroid.ui.obj.DeviceObj" />
+        <variable
+            name="viewmodel"
+            type="com.osum.axedroid.ui.DeviceSettingsViewModel" />
+    </data>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".ui.DeviceSettingsFragment">
+
+    <Switch
+        android:id="@+id/switch_oc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enable Overclocking"
+        android:checked="@={data.overclock}"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Frequency  " />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                setIntToTextView2f="@{data.frequency}" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextNumber_frequency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            setIntToTextView2f="@={data.frequency}"
+            setVisibilityToLayout="@{data.overclock}"
+            />
+
+        <SeekBar
+            android:id="@+id/seekBar_frequency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="@{viewmodel.getMaxFrequency}"
+            android:min="@{viewmodel.getMinFrequency}"
+            android:progress="@{data.frequency}"
+            android:onProgressChanged="@{viewmodel.onFrequencyChanged}"
+            setVisibilityToLayout="@{!data.overclock}"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Core Voltage  " />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                setIntToTextView2f="@{data.coreVoltage}" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextNumber_corevoltage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            setIntToTextView2f="@={data.coreVoltage}"
+            setVisibilityToLayout="@{data.overclock}"
+            />
+
+        <SeekBar
+            android:id="@+id/seekBar_corevolt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="@{viewmodel.getMaxVoltage}"
+            android:min="@{viewmodel.getMinVoltage}"
+            android:progress="@{data.coreVoltage}"
+            android:onProgressChanged="@{viewmodel.onVoltageChanged}"
+            setVisibilityToLayout="@{!data.overclock}"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Display Timeout (-1 always on, 0 off)" />
+
+        <EditText
+            android:id="@+id/editTextNumber_displaytimeout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:text="@={data.displaytimeout}"/>
+    </LinearLayout>
+
+    <Switch
+        android:id="@+id/switch_flipdisplay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:checked="@={data.flipdisplay}"
+        android:text="Flip Lcd Screen 180°" />
+
+    <Switch
+        android:id="@+id/switch_autofancontrol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:checked="@={data.automaticfan}"
+        android:text="Automatic Fan Control" />
+
+    <LinearLayout
+        android:id="@+id/layout_targettemp"
+        setVisibilityToLayout="@{data.automaticfan}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Asic Target Temperatur:  " />
+
+            <TextView
+                setIntToTextView2f="@{data.targettemp}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/seekBar_asictargettemp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="66"
+            android:min="38"
+            android:progress="@={data.targettemp}" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_manualfan"
+        setVisibilityInverseToLayout="@{data.automaticfan}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Manual Fan Speed %:  " />
+
+            <TextView
+                setIntToTextView2f="@{data.fanspeed}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/seekBar_manualfanspeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:min="0"
+            android:progress="@={data.fanspeed}" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_savedevice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="@{()->viewmodel.updateDeviceSettings()}"
+            android:text="Save" />
+
+        <Button
+            android:id="@+id/button_restartdevice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="@{()->viewmodel.restart()}"
+            android:text="Restart" />
+    </LinearLayout>
+</LinearLayout>
+</layout>

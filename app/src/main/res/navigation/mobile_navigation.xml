@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/swarmFragment2">
+    <fragment
+        android:id="@+id/swarmFragment2"
+        android:name="com.osum.axedroid.ui.SwarmFragment"
+        android:label="SwarmFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.osum.axedroid.ui.PoolSettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_pool_settings" />
+    <fragment
+        android:id="@+id/deviceDetailsFragment"
+        android:name="com.osum.axedroid.ui.SettingsFragment"
+        android:label="DeviceDetailsFragment" >
+        <action
+            android:id="@+id/action_deviceDetailsFragment_to_swarmFragment2"
+            app:destination="@id/swarmFragment2" />
+    </fragment>
+</navigation>
