@@ -61,7 +61,7 @@
             android:max="@{viewmodel.getMaxFrequency}"
             android:min="@{viewmodel.getMinFrequency}"
             android:progress="@{data.frequency}"
-            android:onProgressChanged="@{viewmodel.onFrequencyChanged}"
+            android:onProgressChanged="@{viewmodel::onFrequencyChanged}"
             setVisibilityToLayout="@{!data.overclock}"
             />
 
@@ -106,7 +106,7 @@
             android:max="@{viewmodel.getMaxVoltage}"
             android:min="@{viewmodel.getMinVoltage}"
             android:progress="@{data.coreVoltage}"
-            android:onProgressChanged="@{viewmodel.onVoltageChanged}"
+            android:onProgressChanged="@{viewmodel::onVoltageChanged}"
             setVisibilityToLayout="@{!data.overclock}"
             />
     </LinearLayout>
