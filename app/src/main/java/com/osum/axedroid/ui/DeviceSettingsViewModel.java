@@ -21,21 +21,29 @@ public class DeviceSettingsViewModel extends ViewModel {
 
     public int getGetMaxFrequency()
     {
+        if(navigationDevice.deviceController == null || navigationDevice.deviceController.deviceObj == null)
+            return 0;
         return Objects.requireNonNull(navigationDevice.deviceController.deviceObj.asicmodel.get()).max_freq;
     }
 
     public int getGetMinFrequency()
     {
+        if(navigationDevice.deviceController == null || navigationDevice.deviceController.deviceObj == null)
+            return 0;
         return Objects.requireNonNull(navigationDevice.deviceController.deviceObj.asicmodel.get()).min_freq;
     }
 
     public int getGetMinVoltage()
     {
+        if(navigationDevice.deviceController == null || navigationDevice.deviceController.deviceObj == null)
+            return 0;
         return Objects.requireNonNull(navigationDevice.deviceController.deviceObj.asicmodel.get()).min_volt;
     }
 
     public int getGetMaxVoltage()
     {
+        if(navigationDevice.deviceController == null || navigationDevice.deviceController.deviceObj == null)
+            return 0;
         return Objects.requireNonNull(navigationDevice.deviceController.deviceObj.asicmodel.get()).max_volt;
     }
 
