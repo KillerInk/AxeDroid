@@ -44,6 +44,9 @@ public class DeviceObj {
     public ObservableBoolean overclock = new ObservableBoolean();
     public ObservableField<Devices> asicmodel = new ObservableField<>();
 
+    public ObservableBoolean isConnected = new ObservableBoolean();
+    public ObservableDouble expected_hashrate = new ObservableDouble();
+
     public DeviceObj(DeviceController deviceController) {
         this.deviceController = deviceController;
     }

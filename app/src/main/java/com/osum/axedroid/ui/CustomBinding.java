@@ -8,6 +8,8 @@ import android.widget.TextView;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.InverseBindingAdapter;
 
+import com.osum.axedroid.R;
+
 public class CustomBinding {
 
     @BindingAdapter("setDoubleToTextView2f")
@@ -28,6 +30,54 @@ public class CustomBinding {
         if(String.valueOf(val).equals(view.getText().toString()))
             return;
         view.setText(String.valueOf(val));
+    }
+
+    @BindingAdapter("setFanSpeedToTextView")
+    public static void setFanSpeedToTextView(TextView view, int val)
+    {
+        if(view == null)
+            return;
+        if(String.valueOf(val).equals(view.getText().toString()))
+            return;
+        view.setText(String.valueOf(val));
+        if(val > 90)
+            view.setTextColor(view.getResources().getColor(R.color.purple_200));
+        if(val > 80)
+            view.setTextColor(view.getResources().getColor(R.color.purple_700));
+        else
+            view.setTextColor(view.getResources().getColor(R.color.green_shine));
+    }
+
+    @BindingAdapter("setTempToTextView")
+    public static void setTempToTextView(TextView view, double val)
+    {
+        if(view == null)
+            return;
+        if(String.valueOf(val).equals(view.getText().toString()))
+            return;
+        view.setText(String.valueOf(val));
+        if(val > 67d)
+            view.setTextColor(view.getResources().getColor(R.color.purple_200));
+        if(val > 64d)
+            view.setTextColor(view.getResources().getColor(R.color.purple_700));
+        else
+            view.setTextColor(view.getResources().getColor(R.color.green_shine));
+    }
+
+    @BindingAdapter("setVRTempToTextView")
+    public static void setVRTempToTextView(TextView view, double val)
+    {
+        if(view == null)
+            return;
+        if(String.valueOf(val).equals(view.getText().toString()))
+            return;
+        view.setText(String.valueOf(val));
+        if(val > 80d)
+            view.setTextColor(view.getResources().getColor(R.color.purple_200));
+        if(val > 75d)
+            view.setTextColor(view.getResources().getColor(R.color.purple_700));
+        else
+            view.setTextColor(view.getResources().getColor(R.color.green_shine));
     }
 
     @InverseBindingAdapter(attribute = "setIntToTextView2f" ,event =
@@ -84,6 +134,17 @@ public class CustomBinding {
         if(layout == null)
             return;
         layout.setVisibility(!enable ? View.VISIBLE : View.GONE);
+    }
+
+    @BindingAdapter("setRoundCornersToLayout")
+    public static void setRoundCornersToLayout(View layout, boolean enable)
+    {
+        if(layout == null)
+            return;
+        if(enable)
+            layout.setBackground(layout.getResources().getDrawable(R.drawable.roundcorners,layout.getContext().getTheme()));
+        else
+            layout.setBackground(layout.getResources().getDrawable(R.drawable.roundcorner_error,layout.getContext().getTheme()));
     }
 
 }

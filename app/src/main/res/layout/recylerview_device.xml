@@ -18,7 +18,7 @@
         android:layout_marginTop="1dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="1dp"
-        android:background="@drawable/roundcorners"
+        setRoundCornersToLayout="@{device.isConnected}"
         android:orientation="vertical">
 
 
@@ -69,7 +69,7 @@
             android:layout_height="1dp"
             android:layout_marginStart="3dp"
             android:layout_marginEnd="3dp"
-            android:background="#FFFFFF">
+            android:background="@color/border">
 
         </FrameLayout>
 
@@ -91,20 +91,47 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="2dp"
-                    android:layout_weight="1"
-                    android:text="HashRate:"
+                    android:text="HashRate Cur/Exp:"
                     android:textSize="@dimen/swarm_header_size" />
 
-                <TextView
-                    android:id="@+id/textView_hash"
-                    setHashRateToTextView="@{device.hashrate}"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="1dp"
-                    android:layout_weight="1"
-                    android:textSize="@dimen/swarm_value_size"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_hash"
+                        setHashRateToTextView="@{device.hashrate}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="1dp"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/swarm_value_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:text="/"
+                        android:textSize="@dimen/swarm_value_size" />
+
+                    <TextView
+                        android:id="@+id/textView_hashexp"
+                        setHashRateToTextView="@{device.expected_hashrate}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="1dp"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/swarm_value_size"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <FrameLayout
@@ -113,7 +140,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="3dp"
-                android:background="#FFFFFF" />
+                android:background="@color/border" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -174,7 +201,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="3dp"
-                android:background="#FFFFFF" />
+                android:background="@color/border" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -233,7 +260,7 @@
             android:layout_height="1dp"
             android:layout_marginStart="3dp"
             android:layout_marginEnd="3dp"
-            android:background="#FFFFFF" />
+            android:background="@color/border" />
 
 
         <LinearLayout
@@ -291,7 +318,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="3dp"
-                android:background="#FFFFFF" />
+                android:background="@color/border" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -317,7 +344,7 @@
 
                     <TextView
                         android:id="@+id/textView_tempasic"
-                        setDoubleToTextView2f="@{device.temp}"
+                        setTempToTextView="@{device.temp}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="2dp"
@@ -335,7 +362,7 @@
 
                     <TextView
                         android:id="@+id/textView_tempvr"
-                        setDoubleToTextView2f="@{device.vrtemp}"
+                        setVRTempToTextView="@{device.vrtemp}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="2dp"
@@ -351,7 +378,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="3dp"
-                android:background="#FFFFFF" />
+                android:background="@color/border" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -377,7 +404,7 @@
 
                     <TextView
                         android:id="@+id/textView8"
-                        setIntToTextView2f="@{device.fanspeed}"
+                        setFanSpeedToTextView="@{device.fanspeed}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -408,7 +435,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="3dp"
-                android:background="#FFFFFF" />
+                android:background="@color/border" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -442,7 +469,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="3dp"
-                android:background="#FFFFFF" />
+                android:background="@color/border" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -501,7 +528,7 @@
             android:layout_height="1dp"
             android:layout_marginStart="3dp"
             android:layout_marginEnd="3dp"
-            android:background="#FFFFFF">
+            android:background="@color/border">
 
         </FrameLayout>
 

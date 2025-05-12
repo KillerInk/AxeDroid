@@ -25,6 +25,7 @@ public class DeviceController
     {
         deviceObj  = new DeviceObj(this);
         deviceObj.ip.set(ip);
+        deviceObj.isConnected.set(false);
         axeOsClient = AxeOsFactory.newInstance("http://"+ ip).newAsyncRestClient();
     }
 
@@ -68,10 +69,19 @@ public class DeviceController
                 if(eventCallback != null)
                     eventCallback.onSystemInfo(DeviceController.this);
             }
+
+            @Override
+            public void onFailure(Throwable cause) {
+                ApiCallBack.super.onFailure(cause);
+                deviceObj.isConnected.set(false);
+                deviceObj.uptimeSeconds.set(0);
+            }
         });
     }
 
     private void filldata(SystemInfoResponse info) {
+        deviceObj.isConnected.set(true);
+
         deviceObj.bestDiff.set(info.bestDiff);
         deviceObj.bestSessionDiff.set(info.bestSessionDiff);
         deviceObj.coreVoltage.set(info.coreVoltage);
@@ -108,6 +118,12 @@ public class DeviceController
             deviceObj.asicmodel.set(Devices.BM1368);
         else if(info.ASICModel.equals("BM1397"))
             deviceObj.asicmodel.set(Devices.BM1397);
+        deviceObj.expected_hashrate.set(expectedHashrate(info));
 
+    }
+
+    private double expectedHashrate(SystemInfoResponse info)
+    {
+        return Math.floor(info.frequency * ((info.smallCoreCount * info.asicCount) / 1000));
     }
 }

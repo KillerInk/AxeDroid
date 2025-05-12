@@ -96,7 +96,7 @@ public class SwarmAdapter extends RecyclerView.Adapter<SwarmAdapter.ViewHolder> 
         ((DeviceViewHolder)holder).getBinding().rootlayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(((DeviceViewHolder)holder).getBinding().getDevice().deviceController == null) {
+                if(!((DeviceViewHolder)holder).getBinding().getDevice().deviceController.deviceObj.isConnected.get()) {
                     Toast.makeText(view.getContext(),"Device offline", Toast.LENGTH_SHORT).show();
                     return;
                 }
