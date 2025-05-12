@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="Stratum Host:" />
+            android:text="@string/stratum_host" />
 
         <EditText
             android:id="@+id/editTextText_poolhost"
@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="Stratum Port:" />
+            android:text="@string/stratum_port" />
 
         <EditText
             android:id="@+id/editTextText_poolport"
@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="Stratum User:" />
+            android:text="@string/stratum_user" />
 
         <EditText
             android:id="@+id/editTextText_pooluser"
@@ -89,7 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="Stratum Password:" />
+            android:text="@string/stratum_password" />
 
         <EditText
             android:id="@+id/editTextText_poolpw"
@@ -111,7 +111,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="Fallback Stratum Host:" />
+            android:text="@string/fallback_stratum_host" />
 
         <EditText
             android:id="@+id/editTextText_fallbackpoolhost"
@@ -133,7 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="FallbackStratum Port:" />
+            android:text="@string/fallbackstratum_port" />
 
         <EditText
             android:id="@+id/editTextText_fallbackpoolport"
@@ -155,7 +155,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="Fallback Stratum User:" />
+            android:text="@string/fallback_stratum_user" />
 
         <EditText
             android:id="@+id/editTextText_fallbackpooluser"
@@ -177,7 +177,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="Fallback Stratum Password:" />
+            android:text="@string/fallback_stratum_password" />
 
         <EditText
             android:id="@+id/editTextText_fallbackpoolpw"
@@ -201,14 +201,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="@{()->viewmodel.updatePoolSettings()}"
-            android:text="Save" />
+            android:text="@string/save" />
 
         <Button
             android:id="@+id/button_restart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Restart"
+            android:text="@string/restart"
             android:onClick="@{()->viewmodel.restart()}"/>
 
     </LinearLayout>

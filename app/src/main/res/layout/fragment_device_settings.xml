@@ -80,7 +80,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Core Voltage  " />
+                android:text="@string/core_voltage" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -119,7 +119,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Display Timeout (-1 always on, 0 off)" />
+            android:text="@string/display_timeout_1_always_on_0_off" />
 
         <EditText
             android:id="@+id/editTextNumber_displaytimeout"
@@ -130,7 +130,7 @@
             android:text="@={data.displaytimeout}"/>
     </LinearLayout>
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch_flipdisplay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
         android:checked="@={data.flipdisplay}"
         android:text="Flip Lcd Screen 180°" />
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch_autofancontrol"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -162,7 +162,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Asic Target Temperatur:  " />
+                android:text="@string/asic_target_temperatur" />
 
             <TextView
                 setIntToTextView2f="@{data.targettemp}"
@@ -197,7 +197,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Manual Fan Speed %:  " />
+                android:text="@string/manual_fan_speed" />
 
             <TextView
                 setIntToTextView2f="@{data.fanspeed}"
@@ -227,7 +227,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="@{()->viewmodel.updateDeviceSettings()}"
-            android:text="Save" />
+            android:text="@string/save" />
 
         <Button
             android:id="@+id/button_restartdevice"
@@ -235,7 +235,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="@{()->viewmodel.restart()}"
-            android:text="Restart" />
+            android:text="@string/restart" />
     </LinearLayout>
 </LinearLayout>
 </layout>

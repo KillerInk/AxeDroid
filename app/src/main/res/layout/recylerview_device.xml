@@ -35,9 +35,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_marginLeft="2dp"
+                android:layout_marginStart="2dp"
                 android:layout_weight="1"
-                android:text="Host:"
+                android:text="@string/host"
                 android:textSize="@dimen/swarm_header_size" />
 
             <TextView
@@ -56,9 +56,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 android:text="@{device.hostname}"
+                android:textSize="@dimen/swarm_value_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_weight="1"
+                android:text="@string/uptime"
+                android:textSize="@dimen/swarm_header_size" />
+
+            <TextView
+                android:id="@+id/textView_uptime"
+                setUpTimeTextView="@{device.uptimeSeconds}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_weight="1"
                 android:textSize="@dimen/swarm_value_size"
                 android:textStyle="bold" />
 
@@ -90,8 +108,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="2dp"
-                    android:text="HashRate Cur/Exp:"
+                    android:layout_marginStart="2dp"
+                    android:text="@string/hashrate_cur_exp"
                     android:textSize="@dimen/swarm_header_size" />
 
                 <LinearLayout
@@ -106,7 +124,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginLeft="1dp"
+                        android:layout_marginStart="1dp"
                         android:layout_weight="1"
                         android:textSize="@dimen/swarm_value_size"
                         android:textStyle="bold" />
@@ -125,7 +143,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginLeft="1dp"
+                        android:layout_marginStart="1dp"
                         android:layout_weight="1"
                         android:textSize="@dimen/swarm_value_size"
                         android:textStyle="bold" />
@@ -152,9 +170,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="2dp"
+                    android:layout_marginStart="2dp"
                     android:layout_weight="1"
-                    android:text="Shares A/R:"
+                    android:text="@string/shares_a_r"
                     android:textSize="@dimen/swarm_header_size" />
 
                 <LinearLayout
@@ -169,7 +187,7 @@
                         setIntToTextView2f="@{device.sharesAccepted}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
+                        android:layout_marginStart="2dp"
                         android:layout_weight="1"
                         android:textSize="@dimen/swarm_value_size"
                         android:textStyle="bold" />
@@ -179,7 +197,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="/"
+                        android:text="@string/split"
                         android:textSize="@dimen/swarm_value_size" />
 
                     <TextView
@@ -187,7 +205,7 @@
                         setIntToTextView2f="@{device.sharesRejected}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
+                        android:layout_marginStart="2dp"
                         android:layout_weight="1"
                         android:textSize="@dimen/swarm_value_size"
                         android:textStyle="bold" />
@@ -215,7 +233,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
-                    android:text="BestDiff All/Ses:"
+                    android:text="@string/bestdiff_all_ses"
                     android:textSize="@dimen/swarm_header_size" />
 
                 <LinearLayout
@@ -239,7 +257,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="/"
+                        android:text="@string/split"
                         android:textSize="@dimen/swarm_value_size" />
 
                     <TextView
@@ -268,6 +286,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="3dp"
             android:layout_marginEnd="3dp"
+            android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -280,9 +299,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="2dp"
+                    android:layout_marginStart="2dp"
                     android:layout_weight="1"
-                    android:text="Power:"
+                    android:text="@string/power"
                     android:textSize="@dimen/swarm_header_size" />
 
                 <LinearLayout
@@ -297,7 +316,7 @@
                         setDoubleToTextView2f="@{device.power}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
+                        android:layout_marginStart="2dp"
                         android:layout_weight="1"
                         android:textSize="@dimen/swarm_value_size"
                         android:textStyle="bold" />
@@ -307,7 +326,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="W"
+                        android:text="@string/watt"
                         android:textSize="@dimen/swarm_value_size" />
                 </LinearLayout>
             </LinearLayout>
@@ -330,9 +349,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="2dp"
+                    android:layout_marginStart="2dp"
                     android:layout_weight="1"
-                    android:text="Temp Asic/VR:"
+                    android:text="@string/temp_asic_vr"
                     android:textSize="@dimen/swarm_header_size" />
 
                 <LinearLayout
@@ -347,7 +366,7 @@
                         setTempToTextView="@{device.temp}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
+                        android:layout_marginStart="2dp"
                         android:layout_weight="1"
                         android:textSize="@dimen/swarm_value_size"
                         android:textStyle="bold" />
@@ -357,7 +376,7 @@
                         android:layout_width="10dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="/"
+                        android:text="@string/split"
                         android:textSize="@dimen/swarm_value_size" />
 
                     <TextView
@@ -390,9 +409,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="2dp"
+                    android:layout_marginStart="2dp"
                     android:layout_weight="1"
-                    android:text="Fan %/rpm"
+                    android:text="@string/fan_rpm"
                     android:textSize="@dimen/swarm_header_size" />
 
                 <LinearLayout
@@ -415,7 +434,7 @@
                         android:layout_width="10dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="/"
+                        android:text="@string/split"
                         android:textSize="@dimen/swarm_value_size" />
 
                     <TextView
@@ -447,9 +466,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="2dp"
+                    android:layout_marginStart="2dp"
                     android:layout_weight="1"
-                    android:text="mHz"
+                    android:text="@string/mhz"
                     android:textSize="@dimen/swarm_header_size" />
 
                 <TextView
@@ -481,9 +500,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="2dp"
+                    android:layout_marginStart="2dp"
                     android:layout_weight="1"
-                    android:text="mV cur/set"
+                    android:text="@string/mv_cur_set"
                     android:textSize="@dimen/swarm_header_size" />
 
                 <LinearLayout
@@ -506,7 +525,7 @@
                         android:layout_width="10dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="/"
+                        android:text="@string/split"
                         android:textSize="@dimen/swarm_value_size" />
 
                     <TextView
@@ -519,51 +538,6 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="3dp"
-            android:layout_marginEnd="3dp"
-            android:background="@color/border">
-
-        </FrameLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginEnd="3dp"
-            android:layout_marginBottom="3dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:layout_weight="1"
-                    android:text="UpTime:"
-                    android:textSize="@dimen/swarm_header_size" />
-
-                <TextView
-                    android:id="@+id/textView_uptime"
-                    setUpTimeTextView="@{device.uptimeSeconds}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:layout_weight="1"
-                    android:textSize="@dimen/swarm_value_size"
-                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>
