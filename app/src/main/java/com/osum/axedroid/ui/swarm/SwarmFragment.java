@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.provider.ContactsContract;
@@ -45,6 +46,7 @@ public class SwarmFragment extends Fragment {
         swarmBinding.setSwarm(mViewModel);
         getLifecycle().addObserver(mViewModel);
         mViewModel.setAdapter(adapter);
+        swarmBinding.imageButtonSettings.setOnClickListener(view -> Navigation.findNavController(view).navigate(R.id.appSettingsFragment));
         return swarmBinding.getRoot();
     }
 
