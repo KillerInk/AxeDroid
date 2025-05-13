@@ -1,10 +1,4 @@
-package com.osum.axedroid.ui;
-
-import android.content.Context;
-import android.net.InetAddresses;
-import android.net.wifi.WifiManager;
-import android.text.format.Formatter;
-import android.util.Log;
+package com.osum.axedroid.ui.swarm;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableDouble;
@@ -12,24 +6,16 @@ import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModel;
 
-import com.osum.axedroid.api.ServiceGenerator;
-import com.osum.axedroid.api.axeos.AxeOsFactory;
-import com.osum.axedroid.api.axeos.objects.SystemInfoResponse;
 import com.osum.axedroid.ui.controller.DeviceController;
 import com.osum.axedroid.ui.controller.SwarmController;
 import com.osum.axedroid.ui.obj.DeviceObj;
 import com.osum.axedroid.ui.obj.NavigationDevice;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
-import dagger.hilt.android.qualifiers.ApplicationContext;
 
 @HiltViewModel
 public class SwarmViewModel extends ViewModel implements SwarmController.Events , DefaultLifecycleObserver, SwarmAdapter.ItemEvent {

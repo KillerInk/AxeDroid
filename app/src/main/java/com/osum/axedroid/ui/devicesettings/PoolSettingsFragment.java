@@ -1,4 +1,4 @@
-package com.osum.axedroid.ui;
+package com.osum.axedroid.ui.devicesettings;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.osum.axedroid.databinding.FragmentPoolSettingsBinding;
-import com.osum.axedroid.databinding.FragmentSettingsBinding;
 
 import dagger.hilt.android.AndroidEntryPoint;
 

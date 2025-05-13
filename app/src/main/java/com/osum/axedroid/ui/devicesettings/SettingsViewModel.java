@@ -1,4 +1,4 @@
-package com.osum.axedroid.ui;
+package com.osum.axedroid.ui.devicesettings;
 
 import androidx.lifecycle.ViewModel;
 

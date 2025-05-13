@@ -1,20 +1,17 @@
 package com.osum.axedroid.ui.controller;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.net.wifi.WifiManager;
 import android.text.format.Formatter;
 import android.util.ArraySet;
 import android.util.Log;
 
 import com.osum.axedroid.ui.obj.DeviceObj;
+import com.osum.axedroid.ui.obj.PoolTemplate;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class SwarmController {
 
@@ -24,17 +21,19 @@ public class SwarmController {
         void onTotalDataUpdate(double hashrate, double power);
     }
 
-    private Context context;
     private Events event_callback;
     private Thread timerThread;
+    private SettingsController settingsController;
+    private WifiManager wifiManager;
 
     public void setEvent_callback(Events event_callback) {
         this.event_callback = event_callback;
     }
 
-    public SwarmController(Context context)
+    public SwarmController(WifiManager wifiManager,SettingsController settingsController)
     {
-        this.context = context;
+        this.wifiManager = wifiManager;
+        this.settingsController = settingsController;
         loadDevices();
 
     }
@@ -102,8 +101,6 @@ public class SwarmController {
 
             @Override
             public void run() {
-
-                WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
                 int ip = wifiManager.getConnectionInfo().getIpAddress();
                 String ips = Formatter.formatIpAddress(ip);
                 String split[] = ips.split("\\.");
@@ -125,6 +122,29 @@ public class SwarmController {
     private DeviceController.EventCallback devicediscover_callback = deviceController -> {
         if (!deviceControllers.containsKey(deviceController.deviceObj.ip.get())) {
             deviceControllers.put(deviceController.deviceObj.ip.get(), deviceController);
+            if(!settingsController.poolTemplateHashMap.containsKey(deviceController.deviceObj.pool.get()))
+            {
+                PoolTemplate poolTemplate = new PoolTemplate();
+                poolTemplate.url.set(deviceController.deviceObj.pool.get());
+                poolTemplate.user.set(deviceController.deviceObj.pooluser.get());
+                poolTemplate.pw.set(deviceController.deviceObj.poolpw.get());
+                poolTemplate.port.set(deviceController.deviceObj.poolport.get());
+
+                settingsController.poolTemplateHashMap.put(poolTemplate.url.get(),poolTemplate);
+                settingsController.savePools();
+            }
+
+            if(!settingsController.poolTemplateHashMap.containsKey(deviceController.deviceObj.fpool.get()))
+            {
+                PoolTemplate poolTemplate = new PoolTemplate();
+                poolTemplate.url.set(deviceController.deviceObj.fpool.get());
+                poolTemplate.user.set(deviceController.deviceObj.fpooluser.get());
+                poolTemplate.pw.set(deviceController.deviceObj.fpoolpw.get());
+                poolTemplate.port.set(deviceController.deviceObj.fpoolport.get());
+
+                settingsController.poolTemplateHashMap.put(poolTemplate.url.get(),poolTemplate);
+                settingsController.savePools();
+            }
             if(event_callback != null)
                 event_callback.onNewDevice(deviceController.deviceObj);
             storeDevices();
@@ -138,14 +158,12 @@ public class SwarmController {
         {
             ips.add(e.getKey());
         }
-        SharedPreferences preferences = context.getSharedPreferences("Devices", Context.MODE_PRIVATE);
-        preferences.edit().putStringSet("devices", ips).commit();
+        settingsController.storeDevices(ips);
     }
 
     void loadDevices()
     {
-        SharedPreferences preferences = context.getSharedPreferences("Devices", Context.MODE_PRIVATE);
-        Set<String> ips = preferences.getStringSet("devices",new ArraySet<>());
+        Set<String> ips = settingsController.loadDevices();
         for(String s : ips)
         {
             DeviceController deviceController = new DeviceController(s);

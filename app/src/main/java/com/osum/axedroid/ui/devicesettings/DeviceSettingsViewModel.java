@@ -1,12 +1,10 @@
-package com.osum.axedroid.ui;
+package com.osum.axedroid.ui.devicesettings;
 
 import android.widget.SeekBar;
 
-import androidx.databinding.Bindable;
 import androidx.lifecycle.ViewModel;
 
 import com.osum.axedroid.ui.obj.DeviceObj;
-import com.osum.axedroid.ui.obj.Devices;
 import com.osum.axedroid.ui.obj.NavigationDevice;
 
 import java.util.Objects;

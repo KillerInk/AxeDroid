@@ -7,13 +7,13 @@
             type="com.osum.axedroid.ui.obj.DeviceObj" />
         <variable
             name="viewmodel"
-            type="com.osum.axedroid.ui.PoolSettingsViewModel" />
+            type="com.osum.axedroid.ui.devicesettings.PoolSettingsViewModel" />
     </data>
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.PoolSettingsFragment" >
+    tools:context=".ui.devicesettings.PoolSettingsFragment" >
 
     <LinearLayout
         android:layout_width="match_parent"

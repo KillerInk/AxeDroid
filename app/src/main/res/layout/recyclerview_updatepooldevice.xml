@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="device"
+            type="com.osum.axedroid.ui.obj.DeviceObjSelectable" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <CheckBox
+            android:id="@+id/checkBox_ip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="@={device.isSelected}"
+            android:text="@{device.deviceObj.ip}"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/textView_poolmain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{device.deviceObj.pool}"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/textView_poolfallback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{device.deviceObj.fpool}"
+            android:textSize="10sp" />
+    </LinearLayout>
+</layout>

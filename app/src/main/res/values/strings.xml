@@ -33,4 +33,8 @@
     <string name="download">Download</string>
     <string name="close">Close</string>
     <string name="update_available">Update Available</string>
+    <string name="add_new_pool">Add New Pool</string>
+    <string name="apply_pools_to_miners">Apply Pools to Miners</string>
+    <string name="main_pool">Main Pool</string>
+    <string name="fallback_pool">Fallback Pool</string>
 </resources>

@@ -1,6 +1,5 @@
-package com.osum.axedroid.ui;
+package com.osum.axedroid.ui.swarm;
 
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
@@ -93,17 +92,15 @@ public class SwarmAdapter extends RecyclerView.Adapter<SwarmAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ((DeviceViewHolder)holder).getBinding().rootlayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!((DeviceViewHolder)holder).getBinding().getDevice().deviceController.deviceObj.isConnected.get()) {
-                    Toast.makeText(view.getContext(),"Device offline", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(event != null)
-                    event.onItemClick(((DeviceViewHolder)holder).getBinding().getDevice().deviceController);
-                Navigation.findNavController(view).navigate(R.id.deviceDetailsFragment);
+        ((DeviceViewHolder)holder).getBinding().rootlayout.setOnClickListener(view ->
+        {
+            if(!((DeviceViewHolder)holder).getBinding().getDevice().deviceController.deviceObj.isConnected.get()) {
+                Toast.makeText(view.getContext(),"Device offline", Toast.LENGTH_SHORT).show();
+                return;
             }
+            if(event != null)
+                event.onItemClick(((DeviceViewHolder)holder).getBinding().getDevice().deviceController);
+            Navigation.findNavController(view).navigate(R.id.deviceDetailsFragment);
         });
         ((DeviceViewHolder)holder).getBinding().setDevice(data.get(position));
         ((DeviceViewHolder)holder).getBinding().executePendingBindings();

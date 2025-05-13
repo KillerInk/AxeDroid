@@ -1,28 +1,15 @@
 package com.osum.axedroid;
 
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.view.View;
-import android.view.Window;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import com.osum.axedroid.databinding.ActivityMainBinding;
-import com.osum.axedroid.ui.SwarmFragment;
 import com.osum.axedroid.ui.controller.ReleaseChecker;
-import com.osum.axedroid.ui.controller.VersionView;
+import com.osum.axedroid.ui.views.VersionView;
 
 import dagger.hilt.android.AndroidEntryPoint;
 

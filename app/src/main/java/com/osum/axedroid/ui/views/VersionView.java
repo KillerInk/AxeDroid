@@ -1,4 +1,4 @@
-package com.osum.axedroid.ui.controller;
+package com.osum.axedroid.ui.views;
 
 import android.content.Context;
 import android.view.LayoutInflater;

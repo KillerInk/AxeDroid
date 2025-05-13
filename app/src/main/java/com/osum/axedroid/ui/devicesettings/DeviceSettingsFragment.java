@@ -1,4 +1,4 @@
-package com.osum.axedroid.ui;
+package com.osum.axedroid.ui.devicesettings;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.osum.axedroid.R;
 import com.osum.axedroid.databinding.FragmentDeviceSettingsBinding;
 
 import dagger.hilt.android.AndroidEntryPoint;

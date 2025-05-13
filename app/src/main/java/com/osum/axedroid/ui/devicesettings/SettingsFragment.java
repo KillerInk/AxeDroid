@@ -1,4 +1,4 @@
-package com.osum.axedroid.ui;
+package com.osum.axedroid.ui.devicesettings;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;

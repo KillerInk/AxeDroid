@@ -1,4 +1,4 @@
-package com.osum.axedroid.ui;
+package com.osum.axedroid.ui.swarm;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
