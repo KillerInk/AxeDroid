@@ -11,11 +11,11 @@ android {
         applicationId = "com.osum.axedroid"
         minSdk = 24
         targetSdk = 34
-        versionCode = 2
+        versionCode = 3
         versionName = "v0."
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        versionNameSuffix = "2"
+        versionNameSuffix = "3"
     }
 
     buildTypes {
