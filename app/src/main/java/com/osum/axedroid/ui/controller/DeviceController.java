@@ -50,7 +50,7 @@ public class DeviceController
     public void updatePoolSettings()
     {
         //axeOsClient.updatePool(deviceObj.pool.get(),deviceObj.poolport.get(),deviceObj.pooluser.get(),deviceObj.poolpw.get(),deviceObj.fpool.get(),deviceObj.fpoolport.get(),deviceObj.fpooluser.get(),deviceObj.fpoolpw.get());
-        axeOsClient.updatePool(response -> {},
+        axeOsClient.updatePool(response -> { axeOsClient.restart(response1 -> {});},
                 deviceObj.pool.get(),deviceObj.poolport.get(),deviceObj.pooluser.get(),deviceObj.poolpw.get(),deviceObj.fpool.get(),deviceObj.fpoolport.get(),deviceObj.fpooluser.get(),deviceObj.fpoolpw.get());
     }
 
