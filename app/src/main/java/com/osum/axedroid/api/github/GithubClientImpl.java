@@ -5,7 +5,6 @@ import com.osum.axedroid.api.ServiceGenerator;
 import java.io.IOException;
 
 import okhttp3.ResponseBody;
-import retrofit2.http.Body;
 
 public class GithubClientImpl implements GithubClient {
 
@@ -19,7 +18,7 @@ public class GithubClientImpl implements GithubClient {
 
     @Override
     public String getLatestRelease() throws IOException {
-        ResponseBody b = ServiceGenerator.executeSync(githubService.getLatestRelease());
+        ResponseBody b = ServiceGenerator.executeSync(githubService.getLatestAxeDroidRelease());
         return b.string();
     }
 }

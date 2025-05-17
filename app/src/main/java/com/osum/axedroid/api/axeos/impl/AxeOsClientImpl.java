@@ -1,5 +1,9 @@
 package com.osum.axedroid.api.axeos.impl;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import com.osum.axedroid.api.ServiceGenerator;
 import com.osum.axedroid.api.axeos.inter.AxeOsApiService;
 import com.osum.axedroid.api.axeos.inter.AxeOsClient;
@@ -7,6 +11,13 @@ import com.osum.axedroid.api.axeos.objects.DeviceSettingsRequest;
 import com.osum.axedroid.api.axeos.objects.OverClockRequest;
 import com.osum.axedroid.api.axeos.objects.PoolRequest;
 import com.osum.axedroid.api.axeos.objects.SystemInfoResponse;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 public class AxeOsClientImpl implements AxeOsClient {
 
@@ -61,5 +72,17 @@ public class AxeOsClientImpl implements AxeOsClient {
         OverClockRequest request = new OverClockRequest();
         request.overclockEnabled = enable ? 1: 0;
         ServiceGenerator.executeSync(axeOsApiService.setOverClock(request));
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void uploadBIN(File fileToUpload) throws IOException {
+        ServiceGenerator.executeSync(axeOsApiService.uploadBIN(RequestBody.create(Files.readAllBytes(fileToUpload.toPath()))));
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void uploadWWWBIN(File fileToUpload) throws IOException {
+        ServiceGenerator.executeSync(axeOsApiService.uploadWWWBIN(RequestBody.create(Files.readAllBytes(fileToUpload.toPath()))));
     }
 }

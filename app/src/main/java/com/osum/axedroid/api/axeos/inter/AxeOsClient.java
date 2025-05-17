@@ -3,6 +3,9 @@ package com.osum.axedroid.api.axeos.inter;
 import com.osum.axedroid.api.ApiCallBack;
 import com.osum.axedroid.api.axeos.objects.SystemInfoResponse;
 
+import java.io.File;
+import java.io.IOException;
+
 public interface AxeOsClient {
     SystemInfoResponse getSystemInfo();
     void restart();
@@ -18,4 +21,8 @@ public interface AxeOsClient {
                        int overheat_mode);
 
     void setOverClock(boolean enable);
+
+    void uploadBIN(File fileToUpload) throws IOException;
+
+    void uploadWWWBIN(File fileToUpload) throws IOException;
 }

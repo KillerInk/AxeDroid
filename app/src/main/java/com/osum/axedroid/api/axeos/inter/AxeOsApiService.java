@@ -5,6 +5,7 @@ import com.osum.axedroid.api.axeos.objects.OverClockRequest;
 import com.osum.axedroid.api.axeos.objects.PoolRequest;
 import com.osum.axedroid.api.axeos.objects.SystemInfoResponse;
 
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -30,4 +31,9 @@ public interface AxeOsApiService {
 
     @PATCH("/api/system")
     Call<Void> setOverClock(@Body OverClockRequest request);
+
+    @POST("/api/system/OTAWWW")
+    Call<Void>uploadWWWBIN(RequestBody body);
+    @POST("/api/system/OTA")
+    Call<Void>uploadBIN(RequestBody body);
 }

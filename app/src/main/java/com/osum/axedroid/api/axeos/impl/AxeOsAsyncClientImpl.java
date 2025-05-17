@@ -1,5 +1,9 @@
 package com.osum.axedroid.api.axeos.impl;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import com.osum.axedroid.api.ApiCallBack;
 import com.osum.axedroid.api.ApiCallBackAdapter;
 import com.osum.axedroid.api.ServiceGenerator;
@@ -10,6 +14,11 @@ import com.osum.axedroid.api.axeos.objects.OverClockRequest;
 import com.osum.axedroid.api.axeos.objects.PoolRequest;
 import com.osum.axedroid.api.axeos.objects.SystemInfoResponse;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+
+import okhttp3.RequestBody;
 import retrofit2.http.Body;
 
 public class AxeOsAsyncClientImpl implements AxeOsAsyncClient {
@@ -65,5 +74,17 @@ public class AxeOsAsyncClientImpl implements AxeOsAsyncClient {
         OverClockRequest request = new OverClockRequest();
         request.overclockEnabled = enable ? 1: 0;
         axeOsApiService.setOverClock(request).enqueue(new ApiCallBackAdapter<>(callback));
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void uploadBIN(ApiCallBack<Void> callback, File fileToUpload) throws IOException {
+        axeOsApiService.uploadBIN(RequestBody.create(Files.readAllBytes(fileToUpload.toPath()))).enqueue(new ApiCallBackAdapter<>(callback));
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void uploadWWWBIN(ApiCallBack<Void> callback, File fileToUpload) throws IOException {
+        axeOsApiService.uploadWWWBIN(RequestBody.create(Files.readAllBytes(fileToUpload.toPath()))).enqueue(new ApiCallBackAdapter<>(callback));
     }
 }
