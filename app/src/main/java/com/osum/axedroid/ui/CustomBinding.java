@@ -41,11 +41,11 @@ public class CustomBinding {
             return;
         view.setText(String.valueOf(val));
         if(val > 90)
-            view.setTextColor(view.getResources().getColor(R.color.purple_200));
+            view.setTextColor(view.getResources().getColor(R.color.purple_200, view.getContext().getTheme()));
         if(val > 80)
-            view.setTextColor(view.getResources().getColor(R.color.purple_700));
+            view.setTextColor(view.getResources().getColor(R.color.purple_700, view.getContext().getTheme()));
         else
-            view.setTextColor(view.getResources().getColor(R.color.green_shine));
+            view.setTextColor(view.getResources().getColor(R.color.green_shine, view.getContext().getTheme()));
     }
 
     @BindingAdapter("setTempToTextView")
@@ -57,11 +57,11 @@ public class CustomBinding {
             return;
         view.setText(String.valueOf(val));
         if(val > 67d)
-            view.setTextColor(view.getResources().getColor(R.color.purple_200));
+            view.setTextColor(view.getResources().getColor(R.color.purple_200, view.getContext().getTheme()));
         if(val > 64d)
-            view.setTextColor(view.getResources().getColor(R.color.purple_700));
+            view.setTextColor(view.getResources().getColor(R.color.purple_700, view.getContext().getTheme()));
         else
-            view.setTextColor(view.getResources().getColor(R.color.green_shine));
+            view.setTextColor(view.getResources().getColor(R.color.green_shine, view.getContext().getTheme()));
     }
 
     @BindingAdapter("setVRTempToTextView")
@@ -73,11 +73,11 @@ public class CustomBinding {
             return;
         view.setText(String.valueOf(val));
         if(val > 80d)
-            view.setTextColor(view.getResources().getColor(R.color.purple_200));
+            view.setTextColor(view.getResources().getColor(R.color.purple_200, view.getContext().getTheme()));
         if(val > 75d)
-            view.setTextColor(view.getResources().getColor(R.color.purple_700));
+            view.setTextColor(view.getResources().getColor(R.color.purple_700, view.getContext().getTheme()));
         else
-            view.setTextColor(view.getResources().getColor(R.color.green_shine));
+            view.setTextColor(view.getResources().getColor(R.color.green_shine, view.getContext().getTheme()));
     }
 
     @InverseBindingAdapter(attribute = "setIntToTextView2f" ,event =
