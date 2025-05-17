@@ -84,6 +84,8 @@ public class CustomBinding {
             "android:textAttrChanged")
     public static Integer getIntToTextView2Decimal(TextView view)
     {
+        if(view.getText().toString().isEmpty())
+            return 0;
         return Integer.parseInt(view.getText().toString());
     }
 
