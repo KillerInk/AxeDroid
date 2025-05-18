@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="version"
+            type="com.osum.axedroid.ui.obj.UpdateObj" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/textView_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{version.version}" />
+
+        <ProgressBar
+            android:id="@+id/progressBar_loading"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            setVisibilityToView="@{version.downloading}"/>
+
+        <Button
+            android:id="@+id/button_download"
+            setReleaseButtonVisibility="@{(!version.espminer_bin_downloaded &amp;&amp; !version.downloading)}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/download"
+            />
+
+        <Button
+            android:id="@+id/button_flash"
+            setReleaseButtonVisibility="@{version.espminer_bin_downloaded  &amp;&amp; !version.downloading}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/flash"
+
+            />
+
+
+    </LinearLayout>
+</layout>

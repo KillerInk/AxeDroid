@@ -45,7 +45,7 @@ public class ReleaseChecker {
     private void checkupdate() throws IOException, JSONException, NumberFormatException
     {
         GithubClientImpl githubClient = new GithubClientImpl();
-        String ret = githubClient.getLatestRelease();
+        String ret = githubClient.getLatestAxeDroidRelease();
         JSONObject jsonObject = new JSONObject(ret);
         String version = jsonObject.getString("tag_name").replace("v","");
         String curVersion = BuildConfig.VERSION_NAME;

@@ -24,21 +24,21 @@
             android:textSize="10sp" />
 
         <TextView
-            android:id="@+id/textView_poolmain"
+            android:id="@+id/textView_version"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text="@{device.deviceObj.pool}"
+            android:text="@{device.deviceObj.version}"
             android:textSize="10sp" />
 
         <TextView
-            android:id="@+id/textView_poolfallback"
+            android:id="@+id/textView_worker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text="@{device.deviceObj.fpool}"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:text="@{device.deviceObj.uploadState}" />
+
     </LinearLayout>
 </layout>

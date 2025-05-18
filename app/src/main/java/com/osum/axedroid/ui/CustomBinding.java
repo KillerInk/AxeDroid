@@ -1,6 +1,7 @@
 package com.osum.axedroid.ui;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -147,6 +148,22 @@ public class CustomBinding {
             layout.setBackground(layout.getResources().getDrawable(R.drawable.roundcorners,layout.getContext().getTheme()));
         else
             layout.setBackground(layout.getResources().getDrawable(R.drawable.roundcorner_error,layout.getContext().getTheme()));
+    }
+
+    @BindingAdapter("setReleaseButtonVisibility")
+    public static void setReleaseButtonVisibility(Button button, boolean vis)
+    {
+        if(button == null)
+            return;
+        button.setVisibility(vis? View.VISIBLE : View.GONE);
+    }
+
+    @BindingAdapter("setVisibilityToView")
+    public static void setVisibilityToView(View button, boolean vis)
+    {
+        if(button == null)
+            return;
+        button.setVisibility(vis? View.VISIBLE : View.GONE);
     }
 
 }

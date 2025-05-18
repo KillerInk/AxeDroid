@@ -46,6 +46,9 @@ public class DeviceObj {
 
     public ObservableBoolean isConnected = new ObservableBoolean();
     public ObservableDouble expected_hashrate = new ObservableDouble();
+    public ObservableField<String> version = new ObservableField<>();
+
+    public ObservableField<String> uploadState = new ObservableField<>();
 
     public DeviceObj(DeviceController deviceController) {
         this.deviceController = deviceController;

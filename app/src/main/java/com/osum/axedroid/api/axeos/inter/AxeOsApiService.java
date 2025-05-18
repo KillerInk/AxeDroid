@@ -33,7 +33,8 @@ public interface AxeOsApiService {
     Call<Void> setOverClock(@Body OverClockRequest request);
 
     @POST("/api/system/OTAWWW")
-    Call<Void>uploadWWWBIN(RequestBody body);
+    Call<Void>uploadWWWBIN(@Body RequestBody body);
+
     @POST("/api/system/OTA")
-    Call<Void>uploadBIN(RequestBody body);
+    Call<Void>uploadBIN(@Body RequestBody body);
 }

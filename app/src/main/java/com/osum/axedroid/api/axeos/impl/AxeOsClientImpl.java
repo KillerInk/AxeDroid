@@ -74,13 +74,11 @@ public class AxeOsClientImpl implements AxeOsClient {
         ServiceGenerator.executeSync(axeOsApiService.setOverClock(request));
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void uploadBIN(File fileToUpload) throws IOException {
         ServiceGenerator.executeSync(axeOsApiService.uploadBIN(RequestBody.create(Files.readAllBytes(fileToUpload.toPath()))));
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void uploadWWWBIN(File fileToUpload) throws IOException {
         ServiceGenerator.executeSync(axeOsApiService.uploadWWWBIN(RequestBody.create(Files.readAllBytes(fileToUpload.toPath()))));

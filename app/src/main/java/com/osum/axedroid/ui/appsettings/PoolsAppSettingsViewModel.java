@@ -9,7 +9,6 @@ import com.osum.axedroid.ui.obj.DeviceObjSelectable;
 import com.osum.axedroid.ui.obj.PoolTemplate;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -17,14 +16,14 @@ import javax.inject.Inject;
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
 @HiltViewModel
-public class AppSettingsViewModel extends ViewModel {
+public class PoolsAppSettingsViewModel extends ViewModel {
 
     private SettingsController settingsController;
     private SwarmController swarmController;
     ArrayList<DeviceObjSelectable> list = new ArrayList<>();
 
     @Inject
-    public AppSettingsViewModel(SettingsController settingsController, SwarmController swarmController)
+    public PoolsAppSettingsViewModel(SettingsController settingsController, SwarmController swarmController)
     {
         this.settingsController = settingsController;
         this.swarmController = swarmController;

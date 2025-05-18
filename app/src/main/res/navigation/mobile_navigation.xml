@@ -22,20 +22,23 @@
             app:destination="@id/swarmFragment2" />
     </fragment>
     <fragment
-        android:id="@+id/appSettingsFragment"
-        android:name="com.osum.axedroid.ui.appsettings.AppSettingsFragment"
-        android:label="fragment_app_settings"
-        tools:layout="@layout/fragment_app_settings" >
-        <action
-            android:id="@+id/action_appSettingsFragment_to_swarmFragment2"
-            app:destination="@id/swarmFragment2" />
-    </fragment>
-    <fragment
         android:id="@+id/addPoolView"
         android:name="com.osum.axedroid.ui.views.AddPoolView"
         android:label="AddPoolView" >
         <action
-            android:id="@+id/action_addPoolView_to_appSettingsFragment"
-            app:destination="@id/appSettingsFragment" />
+            android:id="@+id/action_addPoolView_to_poolsAppSettingsFragment"
+            app:destination="@id/poolsAppSettingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/poolsAppSettingsFragment"
+        android:name="com.osum.axedroid.ui.appsettings.PoolsAppSettingsFragment"
+        android:label="PoolsAppSettingsFragment" />
+    <fragment
+        android:id="@+id/appSettingsFragment"
+        android:name="com.osum.axedroid.ui.appsettings.AppSettingsFragment"
+        android:label="AppSettingsFragment" >
+        <action
+            android:id="@+id/action_appSettingsFragment_to_swarmFragment2"
+            app:destination="@id/swarmFragment2" />
     </fragment>
 </navigation>

@@ -1,111 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"><data></data>
+    xmlns:tools="http://schemas.android.com/tools">
+    <data></data>
 
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical">
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:context=".ui.appsettings.AppSettingsFragment">
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tablayout_app_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewpager_app_settings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Pools" />
-
-                <Spinner
-                    android:id="@+id/spinner_pools"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="10dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/button_new"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="1dp"
-                        android:layout_marginEnd="1dp"
-                        android:layout_weight="1"
-                        android:text="Add New" />
-
-                    <Button
-                        android:id="@+id/button_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="1dp"
-                        android:layout_marginEnd="1dp"
-                        android:layout_weight="1"
-                        android:text="Edit" />
-
-                    <Button
-                        android:id="@+id/button_delete"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="1dp"
-                        android:layout_marginEnd="1dp"
-                        android:layout_weight="1"
-                        android:text="Delete Selected" />
-                </LinearLayout>
-
-                <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/apply_pools_to_miners" />
-
-            <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/main_pool" />
-
-                <Spinner
-                    android:id="@+id/spinner_pool_main"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="10dp" />
-
-            <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/fallback_pool" />
-
-                <Spinner
-                    android:id="@+id/spinner_pool_fallback"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="10dp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview_updatepooldevices"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <Button
-                    android:id="@+id/button_applyPoolsToDevices"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Apply Pools To Devices" />
-            </LinearLayout>
-    </ScrollView>
-
+        </androidx.viewpager2.widget.ViewPager2>
+    </LinearLayout>
 </layout>

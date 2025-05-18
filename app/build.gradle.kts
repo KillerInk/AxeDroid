@@ -9,7 +9,7 @@ android {
     buildFeatures.dataBinding = true
     defaultConfig {
         applicationId = "com.osum.axedroid"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 3
         versionName = "v0."

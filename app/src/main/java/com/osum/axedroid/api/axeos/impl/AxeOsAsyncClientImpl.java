@@ -76,13 +76,11 @@ public class AxeOsAsyncClientImpl implements AxeOsAsyncClient {
         axeOsApiService.setOverClock(request).enqueue(new ApiCallBackAdapter<>(callback));
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void uploadBIN(ApiCallBack<Void> callback, File fileToUpload) throws IOException {
         axeOsApiService.uploadBIN(RequestBody.create(Files.readAllBytes(fileToUpload.toPath()))).enqueue(new ApiCallBackAdapter<>(callback));
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void uploadWWWBIN(ApiCallBack<Void> callback, File fileToUpload) throws IOException {
         axeOsApiService.uploadWWWBIN(RequestBody.create(Files.readAllBytes(fileToUpload.toPath()))).enqueue(new ApiCallBackAdapter<>(callback));

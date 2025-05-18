@@ -1,91 +1,86 @@
 package com.osum.axedroid.ui.appsettings;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Lifecycle;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.osum.axedroid.R;
 import com.osum.axedroid.databinding.FragmentAppSettingsBinding;
-import com.osum.axedroid.generated.callback.OnClickListener;
-import com.osum.axedroid.ui.views.AddPoolView;
+import com.osum.axedroid.databinding.FragmentSettingsBinding;
+import com.osum.axedroid.ui.devicesettings.DeviceSettingsFragment;
+import com.osum.axedroid.ui.devicesettings.PoolSettingsFragment;
+import com.osum.axedroid.ui.devicesettings.SettingsFragment;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link AppSettingsFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
 @AndroidEntryPoint
 public class AppSettingsFragment extends Fragment {
 
-    private AppSettingsViewModel mViewModel;
     private FragmentAppSettingsBinding binding;
-    private AppSettingsDevicesToUpdateAdapter adapter;
+
+    public AppSettingsFragment() {
+        // Required empty public constructor
+    }
 
     public static AppSettingsFragment newInstance() {
-        return new AppSettingsFragment();
+        AppSettingsFragment fragment = new AppSettingsFragment();
+        return fragment;
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        mViewModel = new ViewModelProvider(this).get(AppSettingsViewModel.class);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         binding = FragmentAppSettingsBinding.inflate(inflater,container,false);
-        adapter = new AppSettingsDevicesToUpdateAdapter();
-
-        binding.recyclerviewUpdatepooldevices.setAdapter(adapter);
-        binding.recyclerviewUpdatepooldevices.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter.addDevices(mViewModel.getSelectAbleDevices());
-        updateSpinner();
-        binding.buttonNew.setOnClickListener(view -> {
-            Bundle b = new Bundle();
-            b.putString("template","");
-            Navigation.findNavController(view).navigate(R.id.addPoolView,b);
-        });
-        binding.buttonEdit.setOnClickListener(view -> {
-            Bundle b = new Bundle();
-            b.putString("template",binding.spinnerPools.getSelectedItem().toString());
-            Navigation.findNavController(view).navigate(R.id.addPoolView,b);
-        });
-        binding.buttonDelete.setOnClickListener(view -> {
-            mViewModel.deletePool(binding.spinnerPools.getSelectedItem().toString());
-            updateSpinner();
-        });
-        binding.buttonApplyPoolsToDevices.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mViewModel.updateSelectedDevicesPools(binding.spinnerPoolMain.getSelectedItem().toString(),binding.spinnerPoolFallback.getSelectedItem().toString());
+        AppSettingsFragment.ViewPagerAdapter adapter = new AppSettingsFragment.ViewPagerAdapter(getParentFragmentManager(),getLifecycle());
+        binding.viewpagerAppSettings.setAdapter(adapter);
+        TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(binding.tablayoutAppSettings, binding.viewpagerAppSettings, (tab, position) -> {
+            switch(position)
+            {
+                case 1:
+                    tab.setText("Update");
+                    break;
+                default:
+                    tab.setText("Pools");
+                    break;
             }
         });
-
+        tabLayoutMediator.attach();
         return binding.getRoot();
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        updateSpinner();
-    }
+    private static class ViewPagerAdapter extends FragmentStateAdapter {
 
-    private void updateSpinner()
-    {
-        String[] ar = mViewModel.getPools();
-        ArrayAdapter<String> ad = new ArrayAdapter<>(
-                getContext(),
-                android.R.layout.simple_spinner_item,
-                ar
-        );
-        ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.spinnerPools.setAdapter(ad);
-        binding.spinnerPoolMain.setAdapter(ad);
-        binding.spinnerPoolFallback.setAdapter(ad);
-    }
+        public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
+            super(fragmentActivity);
+        }
+        public ViewPagerAdapter(FragmentManager fragmentManager, @NonNull Lifecycle lifecycle)
+        {
+            super(fragmentManager,lifecycle);
+        }
 
+        @NonNull @Override public Fragment createFragment(int position) {
+            if(position == 0)
+                return PoolsAppSettingsFragment.newInstance();
+            else
+                return UpdateDevicesAppSettingsFragment.newInstance();
+        }
+        @Override public int getItemCount() {
+            return 2;
+        }
+    }
 }

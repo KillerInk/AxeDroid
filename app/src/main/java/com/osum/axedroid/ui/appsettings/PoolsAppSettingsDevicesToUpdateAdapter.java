@@ -1,7 +1,6 @@
 package com.osum.axedroid.ui.appsettings;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -10,19 +9,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.osum.axedroid.R;
 import com.osum.axedroid.databinding.RecyclerviewUpdatepooldeviceBinding;
-import com.osum.axedroid.databinding.RecylerviewDeviceBinding;
 import com.osum.axedroid.ui.obj.DeviceObjSelectable;
+import com.osum.axedroid.ui.obj.UpdateObj;
 import com.osum.axedroid.ui.swarm.SwarmAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
-public class AppSettingsDevicesToUpdateAdapter extends RecyclerView.Adapter<SwarmAdapter.ViewHolder>  {
+public class PoolsAppSettingsDevicesToUpdateAdapter extends RecyclerView.Adapter<SwarmAdapter.ViewHolder>  {
 
     private ArrayList<DeviceObjSelectable> deviceObjSelectableArrayList = new ArrayList<>();
 
     public void addDevices(ArrayList<DeviceObjSelectable> deviceObjSelectableArrayList)
     {
         this.deviceObjSelectableArrayList = deviceObjSelectableArrayList;
+        Collections.sort(deviceObjSelectableArrayList, new Comparator<DeviceObjSelectable>() {
+            @Override
+            public int compare(DeviceObjSelectable deviceObj, DeviceObjSelectable t1) {
+                return deviceObj.deviceObj.ip.get().compareToIgnoreCase(t1.deviceObj.ip.get());
+            }
+        });
         notifyDataSetChanged();
     }
 

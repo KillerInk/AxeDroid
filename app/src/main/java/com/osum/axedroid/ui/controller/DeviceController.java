@@ -1,5 +1,7 @@
 package com.osum.axedroid.ui.controller;
 
+import android.util.Log;
+
 import com.osum.axedroid.api.ApiCallBack;
 import com.osum.axedroid.api.axeos.AxeOsFactory;
 import com.osum.axedroid.api.axeos.inter.AxeOsAsyncClient;
@@ -7,6 +9,9 @@ import com.osum.axedroid.api.axeos.inter.AxeOsClient;
 import com.osum.axedroid.api.axeos.objects.SystemInfoResponse;
 import com.osum.axedroid.ui.obj.DeviceObj;
 import com.osum.axedroid.ui.obj.Devices;
+
+import java.io.File;
+import java.io.IOException;
 
 public class DeviceController
 {
@@ -119,11 +124,76 @@ public class DeviceController
         else if(info.ASICModel.equals("BM1397"))
             deviceObj.asicmodel.set(Devices.BM1397);
         deviceObj.expected_hashrate.set(expectedHashrate(info));
+        deviceObj.version.set(info.version);
 
     }
 
     private double expectedHashrate(SystemInfoResponse info)
     {
         return Math.floor(info.frequency * ((info.smallCoreCount * info.asicCount) / 1000));
+    }
+
+    public void flash(File wwwbin, File espbin) throws IOException {
+        deviceObj.uploadState.set("Upload www bin");
+        axeOsClient.uploadWWWBIN(new ApiCallBack<Void>() {
+            @Override
+            public void onResponse(Void response) {
+                deviceObj.uploadState.set("Uploaded www bin. Reboot..");
+                Log.i(DeviceController.class.getSimpleName(), "uploaded wwwbin");
+                waitForRebootAndFlashEspBin(espbin);
+            }
+        },wwwbin);
+
+    }
+
+    int trysToConnect = 0;
+    private void waitForRebootAndFlashEspBin(File espbin)
+    {
+        trysToConnect = 0;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Log.i(DeviceController.class.getSimpleName(), "wait to for device after wwwbin flash try:" + trysToConnect);
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                connect(espbin);
+            }
+        }).start();
+
+    }
+
+    private void connect(File espbin)
+    {
+        axeOsClient.getSystemInfo(new ApiCallBack<SystemInfoResponse>() {
+            @Override
+            public void onResponse(SystemInfoResponse response) {
+                try {
+                    Log.i(DeviceController.class.getSimpleName(), "device online flash espbin");
+                    deviceObj.uploadState.set("Upload esp-miner bin");
+                    axeOsClient.uploadBIN(new ApiCallBack<Void>() {
+                        @Override
+                        public void onResponse(Void response) {
+                            Log.i(DeviceController.class.getSimpleName(), "uploaded espbin");
+                            deviceObj.uploadState.set("Uploaded esp-miner bin. Reboot..");
+                        }
+                    },espbin);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable cause) {
+                ApiCallBack.super.onFailure(cause);
+                trysToConnect++;
+                deviceObj.uploadState.set("device rebooting...");
+                Log.i(DeviceController.class.getSimpleName(), "device rebooting...");
+                if(trysToConnect < 5)
+                    connect(espbin);
+            }
+        });
     }
 }
