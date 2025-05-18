@@ -2,7 +2,6 @@ package com.osum.axedroid.api.github;
 
 import com.osum.axedroid.api.ServiceGenerator;
 import com.osum.axedroid.api.axeos.objects.GithubReleaseObj;
-import com.osum.axedroid.api.axeos.objects.GithubReleasesResponse;
 
 import java.io.IOException;
 import java.util.List;

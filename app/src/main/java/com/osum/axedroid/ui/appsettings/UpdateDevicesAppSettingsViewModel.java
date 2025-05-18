@@ -1,14 +1,11 @@
 package com.osum.axedroid.ui.appsettings;
 
-import android.app.Application;
-import android.os.Environment;
 
 import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.ViewModel;
 
 import com.osum.axedroid.api.axeos.objects.GithubReleaseObj;
-import com.osum.axedroid.api.axeos.objects.GithubReleasesResponse;
 import com.osum.axedroid.api.github.GithubClient;
 import com.osum.axedroid.api.github.GithubClientImpl;
 import com.osum.axedroid.ui.controller.DeviceController;
